@@ -1,249 +1,31 @@
-/* === Variáveis Globais === */
-:root {
-  --bg: #0f172a;
-  --card: #0b1220;
-  --accent: #0ea5a4;
-  --muted: #94a3b8;
-  --success: #16a34a;
-  --danger: #ef4444;
-  --focus: #fbbf24;
-  --text-primary: #e6eef6;
-  --border: rgba(255,255,255,.08);
-  --shadow: 0 6px 18px rgba(0,0,0,.4);
-  --transition: all 0.2s ease-in-out;
-}
-
-/* === Reset e Base === */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
-  color: var(--text-primary);
-  background: linear-gradient(180deg, #071028 0%, #08122a 100%);
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-body {
-  padding: 0.5rem;
-  min-height: 100vh;
+/* Ajuste para o question-footer */
+.question-footer {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  animation: pageFadeIn 0.5s ease-in-out;
-  box-sizing: border-box;
-}
-
-@keyframes pageFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.app {
-  max-width: 980px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* === Cabeçalho === */
-header {
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.mode-header {
-  text-align: center;
-}
-
-.mode-indicator {
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  background: rgba(255,255,255,0.03);
-  font-weight: 700;
-  font-size: 0.9rem;
-  display: inline-block;
-}
-
-.controls {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  margin-top: 0.75rem;
 }
 
-/* === Controles e Botões === */
-button, select {
-  background: linear-gradient(180deg, #0b1b2a, #06101a);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  font-family: inherit;
-  transition: var(--transition);
-  outline: none;
-  cursor: pointer;
-  font-size: 0.95rem;
-  min-width: 80px;
-  max-width: 120px;
-  box-sizing: border-box;
-}
-
-button:hover, select:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(14,165,164,0.2);
-}
-
-button:focus, select:focus {
-  border-color: var(--focus);
-  box-shadow: 0 0 0 2px var(--focus);
-}
-
-.btn-primary {
-  background: linear-gradient(180deg, var(--accent), #0c8b89);
-  color: #042022;
-  border: none;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.95rem;
-  max-width: 120px;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(180deg, #0bb8b3, #0ca89f);
-}
-
-.btn-ghost {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.10);
-}
-
-.btn-ghost:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-.btn-ghost[aria-pressed="true"] {
-  background: rgba(255,255,255,0.1);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(14,165,164,0.2);
-}
-
-/* === Ações Inline === */
-.actions-inline {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255,255,255,0.03);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-}
-
-.actions-inline.simulado-active {
-  display: flex;
-}
-
-.timer-box {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255,255,255,0.03);
-  border-radius: 0.5rem;
-  padding: 0.3rem 0.75rem;
-  min-width: 100px;
-  justify-content: center;
-}
-
-.timer {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-/* === Estatísticas Inline === */
-.stats-inline {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  background: rgba(255,255,255,0.03);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.stats-inline span {
-  color: var(--muted);
-}
-
-.stats-inline strong {
-  color: var(--text-primary);
-  font-weight: 600;
-  margin-right: 0.1rem;
-}
-
-/* === Cartão de Pergunta === */
-main {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5rem;
-}
-
+/* Ajuste para o card */
 .card {
   background: rgba(255,255,255,0.04);
-  padding: 0.75rem;
+  padding: 1rem;
   border-radius: 0.75rem;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,.5);
-}
-
-.card:focus {
-  outline: 2px solid var(--focus);
-}
-
-.question-num {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.question-text {
-  font-size: 1.15rem;
-  margin: 0.5rem 0;
-  line-height: 1.4;
-}
-
-.question-image {
-  max-width: 100%;
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
-  object-fit: contain;
-}
-
+/* Ajuste para options */
 .options {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
 
+/* Ajuste para alternativas */
 .opt {
   display: flex;
   align-items: center;
@@ -258,300 +40,40 @@ main {
   font-family: inherit;
   outline: none;
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
-.opt:hover {
-  border-color: var(--accent);
-  background: rgba(14,165,164,0.1);
-}
-
-.opt:focus {
-  border-color: var(--focus);
-  box-shadow: 0 0 0 2px rgba(251,191,36,0.3);
-}
-
-.opt[aria-pressed="true"] {
-  border: 2px solid var(--focus);
-  background: rgba(251,191,36,0.1);
-}
-
-.opt.opt-disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
-.opt .letter {
-  min-width: 30px;
-  height: 30px;
-  border-radius: 0.5rem;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.04);
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.opt.correct {
-  border-color: rgba(22,163,74,.7);
-  background: linear-gradient(90deg, rgba(16,185,129,0.09), rgba(16,185,129,0.05));
-}
-
-.opt.wrong {
-  border-color: rgba(239,68,68,.35);
-  background: linear-gradient(90deg, rgba(239,68,68,0.07), rgba(239,68,68,0.01));
-}
-
+/* Ajuste para imagens dentro de alternativas */
 .opt img {
   max-height: 60px;
+  max-width: 100%;
   border-radius: 0.375rem;
+  object-fit: contain;
 }
 
-.explanation {
-  margin-top: 0.5rem;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  background: rgba(255,255,255,0.06);
-  color: var(--muted);
-  font-size: 0.9rem;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === Rodapé e Dicas === */
-.small {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-footer {
-  margin-top: 0.75rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-  text-align: center;
-  padding: 0.5rem 0;
-  background: rgba(255,255,255,0.03);
-  border-radius: 0.5rem;
-}
-
-.hint {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  border: 0;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-/* === Modal de Pontuação Final === */
-.final-score-modal {
-  background: var(--card);
-  color: var(--text-primary);
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-  padding: 1.5rem;
-  max-width: 90vw;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  display: none;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.final-score-modal.visible {
-  display: block;
-  animation: modalFadeIn 0.3s ease-in-out;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: translate(-50%, -55%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
-}
-
-.final-score-modal h2 {
-  margin-top: 0;
-  font-size: 1.25rem;
-}
-
-.final-score-modal ul {
-  text-align: left;
-  margin: 0 auto 1rem auto;
-  display: inline-block;
-}
-
-.final-score-modal button {
-  margin-top: 1rem;
-}
-
-.final-score-modal .aprovado {
-  color: var(--success);
-  font-weight: bold;
-}
-
-.final-score-modal .reprovado {
-  color: var(--danger);
-  font-weight: bold;
-}
-
-.question-review {
-  margin: 0.75rem 0;
-  padding: 0.75rem;
-  background: rgba(255,255,255,0.06);
-  border-radius: 0.5rem;
-}
-
-.question-review p {
-  margin: 0.5rem 0;
-  word-wrap: break-word;
-}
-
-/* === Media Queries para Responsividade === */
+/* Media Queries ajustadas */
 @media (max-width: 700px) {
-  body {
-    padding: 0.25rem;
-  }
-
-  .app {
-    padding: 0 0.25rem;
-  }
-
-  .mode-header {
-    text-align: center;
-    margin-bottom: 0.25rem;
-  }
-
-  .mode-indicator {
-    font-size: 0.85rem;
-    padding: 0.2rem 0.4rem;
-  }
-
-  .controls {
-    gap: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
-
-  #btnQuiz, #btnSimulado, #categorySelect {
-    font-size: 0.9rem;
-    min-width: 70px;
-    max-width: 100px;
-    padding: 0.4rem 0.5rem;
-  }
-
-  #categorySelect {
-    width: 100px;
-  }
-
-  .stats-inline {
-    font-size: 0.85rem;
-    gap: 0.5rem;
-    padding: 0.4rem;
-  }
-
-  .actions-inline {
-    font-size: 0.85rem;
-    gap: 0.25rem;
-    padding: 0.4rem;
-  }
-
-  .timer-box {
-    min-width: 90px;
-    padding: 0.3rem 0.5rem;
-  }
-
-  .timer {
-    font-size: 0.9rem;
-  }
-
-  .btn-primary {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.9rem;
-    max-width: 100px;
-  }
-
-  .question-text {
-    font-size: 1.05rem;
-  }
-
   .card {
-    padding: 0.5rem;
-  }
-
-  .options {
-    gap: 0.4rem;
+    padding: 0.75rem;
   }
 
   .opt {
     font-size: 0.95rem;
-    padding: 0.5rem;
-  }
-
-  .opt .letter {
-    min-width: 28px;
-    height: 28px;
-    font-size: 0.9rem;
-  }
-
-  .final-score-modal {
-    width: 95vw;
-    padding: 1.25rem;
-  }
-
-  .question-review img {
-    max-width: 100%;
-    max-height: 120px;
-    object-fit: contain;
+    padding: 0.6rem;
+    overflow-wrap: break-word;
   }
 }
 
-/* === Ajustes para telas muito pequenas === */
 @media (max-width: 400px) {
-  .stats-inline {
-    gap: 0.25rem;
-    padding: 0.3rem;
-    font-size: 0.8rem;
-  }
-
-  .actions-inline {
-    gap: 0.25rem;
-    padding: 0.3rem;
-  }
-
-  .timer-box {
-    min-width: 80px;
-    padding: 0.2rem 0.4rem;
-  }
-
-  button, select {
-    font-size: 0.85rem;
-    min-width: 60px;
-    max-width: 90px;
-    padding: 0.3rem 0.5rem;
-  }
-
-  .btn-primary {
-    max-width: 90px;
-  }
-
-  .question-text {
-    font-size: 1rem;
+  .card {
+    padding: 0.6rem;
   }
 
   .opt {
     font-size: 0.9rem;
+    padding: 0.5rem;
+    overflow-wrap: break-word;
   }
 }
