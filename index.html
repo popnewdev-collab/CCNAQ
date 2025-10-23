@@ -72,12 +72,11 @@
 
   <script src="js/config.js" defer></script>
   <script src="js/script.js" defer></script>
-  <!-- Adição do JavaScript para bloquear cópia e clique com botão direito -->
+  <!-- Adição do JavaScript para bloquear cópia e clique com botão direito, sem notificação no clique direito -->
   <script>
     // Impede o clique com o botão direito
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
-      alert('O clique com o botão direito está desativado para proteger o conteúdo.');
     });
 
     // Impede a seleção de texto
