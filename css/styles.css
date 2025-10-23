@@ -229,20 +229,11 @@ main {
 
 .card .question-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
   gap: 0.5rem;
   flex-wrap: wrap;
-}
-
-.card .question-footer .hint {
-  flex: 1;
-  text-align: left;
-}
-
-.card .question-footer .btn-primary {
-  flex-shrink: 0;
 }
 
 .question-num {
@@ -279,13 +270,15 @@ main {
   background: none;
   cursor: pointer;
   transition: var(--transition);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-family: inherit;
   outline: none;
   text-align: left;
   white-space: normal;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   min-width: 0;
+  flex: 1;
 }
 
 .opt:hover {
