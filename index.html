@@ -72,5 +72,24 @@
 
   <script src="js/config.js" defer></script>
   <script src="js/script.js" defer></script>
+  <!-- Adição do JavaScript para bloquear cópia e clique com botão direito -->
+  <script>
+    // Impede o clique com o botão direito
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      alert('O clique com o botão direito está desativado para proteger o conteúdo.');
+    });
+
+    // Impede a seleção de texto
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+    });
+
+    // Impede atalhos de cópia (Ctrl+C, Cmd+C)
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+      alert('A cópia de conteúdo está desativada.');
+    });
+  </script>
 </body>
 </html>
