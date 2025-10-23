@@ -6,136 +6,26 @@
   <title>CCNA Prep Quiz</title>
   <meta name="description" content="Teste seus conhecimentos para a certificação CCNA com este quiz interativo." />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    /* Estilos para proteção e visual */
-    body {
-      user-select: none; /* Impede seleção de texto */
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f7fa;
-      margin: 0;
-      padding: 1rem;
-    }
-    .app {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 1rem;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .btn-ghost, .btn-primary {
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid #007bff;
-      color: #007bff;
-    }
-    .btn-ghost:hover, .btn-primary:hover {
-      background: #007bff;
-      color: #fff;
-    }
-    .btn-primary {
-      background: #007bff;
-      border: none;
-      color: #fff;
-    }
-    .card {
-      padding: 1.5rem;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    .question-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-      margin-top: 1rem;
-    }
-    .options label {
-      display: block;
-      padding: 0.75rem;
-      margin: 0.5rem 0;
-      background: #f8f9fa;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-    .options label:hover {
-      background: #e0e0e0;
-    }
-    .progress-bar {
-      height: 8px;
-      background: #e0e0e0;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 0.5rem;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      background: #28a745;
-      transition: width 0.3s ease;
-    }
-    .final-score-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.3s ease;
-    }
-    .modal-content {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @media print {
-      body { display: none; } /* Impede impressão */
-    }
-  </style>
 </head>
-<body oncontextmenu="return false;"> <!-- Bloqueia clique direito -->
+<body>
   <div class="app">
     <header>
       <div class="mode-header">
         <span class="mode-indicator" id="modeIndicator">Modo: <strong>Quiz</strong></span>
       </div>
       <div class="controls" role="group" aria-label="Controles do Quiz">
-        <button id="btnQuiz" class="btn-ghost" aria-pressed="true" tabindex="0"><i class="fas fa-question-circle"></i> Quiz</button>
-        <button id="btnSimulado" class="btn-ghost" aria-pressed="false" tabindex="0"><i class="fas fa-file-alt"></i> Simulado</button>
+        <button id="btnQuiz" class="btn-ghost" aria-pressed="true" tabindex="0">Quiz</button>
+        <button id="btnSimulado" class="btn-ghost" aria-pressed="false" tabindex="0">Simulado</button>
         <label for="categorySelect" class="small">Categorias:</label>
-        <select id="categorySelect" aria-describedby="categoryDesc">
+        <select id="categorySelect">
           <option value="all">Todas</option>
         </select>
-        <span id="categoryDesc" class="visually-hidden">Selecione uma categoria para filtrar as perguntas.</span>
       </div>
     </header>
 
     <div class="actions-inline" id="actionsInline">
-      <button id="restartBtn" class="btn-ghost" aria-label="Reiniciar quiz"><i class="fas fa-redo"></i> Reiniciar</button>
+      <button id="restartBtn" class="btn-ghost" aria-label="Reiniciar quiz">Reiniciar</button>
       <div class="timer-box">
         <span class="small">Tempo:</span>
         <span class="timer" id="timerDisplay" aria-live="polite">--:--:--</span>
@@ -147,24 +37,23 @@
       <span><strong>Acertos:</strong> <span id="totalCorrect">0</span></span>
       <span><strong>Erros:</strong> <span id="totalWrong">0</span></span>
       <span><strong>Progresso:</strong> <span id="progress">0%</span></span>
-      <div class="progress-bar"><div class="progress-bar-fill" style="width: 0%;"></div></div>
     </div>
 
     <main>
       <section>
-        <div class="card" id="questionCard" tabindex="0" aria-describedby="questionText">
+        <div class="card" id="questionCard" tabindex="0">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
               <div class="question-num" id="qMeta" aria-live="polite">Carregando perguntas...</div>
               <div class="question-text" id="questionText">—</div>
-              <img id="questionImage" class="question-image" src="" alt="Imagem da pergunta" style="display: none;" draggable="false">
+              <img id="questionImage" class="question-image" src="" alt="Imagem da pergunta" style="display: none;">
             </div>
           </div>
           <div class="options" id="options" role="group" aria-label="Alternativas"></div>
           <div id="explanation" class="explanation" style="display: none;"></div>
           <div style="display: flex; justify-content: space-between; margin-top: 0.875rem; gap: 0.5rem;">
             <div class="hint">Selecione as alternativas corretas. A validação é automática.</div>
-            <button id="nextBtn" class="btn-primary" aria-label="Próxima pergunta" tabindex="0"><i class="fas fa-arrow-right"></i> Próxima</button>
+            <button id="nextBtn" class="btn-primary" aria-label="Próxima pergunta" tabindex="0">Próxima</button>
           </div>
         </div>
       </section>
@@ -173,42 +62,14 @@
     <footer>
       <div>
         <span class="visually-hidden" id="accessibilityStatus" aria-live="assertive"></span>
-        <p class="small">© 2025 CCNA Prep Quiz. Todos os direitos reservados. Proibida a cópia de conteúdo.</p>
       </div>
     </footer>
 
     <div class="final-score-modal" id="finalScoreModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
-      <div class="modal-content">
-        <h2 id="modalTitle">Pontuação Final</h2>
-        <div id="modalContent"></div>
-        <button class="btn-primary" onclick="document.getElementById('finalScoreModal').style.display='none'">Fechar</button>
-      </div>
+      <!-- Conteúdo gerado dinamicamente -->
     </div>
   </div>
 
-  <script>
-    // Bloquear cópia de texto
-    document.addEventListener('copy', (e) => {
-      e.preventDefault();
-      alert('A cópia de conteúdo está desativada.');
-    });
-
-    // Atualizar barra de progresso (exemplo)
-    function updateProgress(percent) {
-      document.querySelector('.progress-bar-fill').style.width = `${percent}%`;
-    }
-
-    // Exemplo de funcionalidade do modo escuro
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    }
-
-    // Carregar preferência de modo escuro
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-  </script>
   <script src="js/config.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
